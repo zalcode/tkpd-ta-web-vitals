@@ -4,7 +4,7 @@ import { object } from 'prop-types';
 import Layout from '../components/Layout';
 
 import HomeComponent from './Home';
-import PDPComponent from './PDP';
+import PDPComponent from './PDP/lazy';
 
 const Routes = ({ history, location, match }) => {
   const routeProps = { history, location, match };
