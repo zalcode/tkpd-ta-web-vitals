@@ -21,14 +21,14 @@ const productCard = {
   marginBottom: '10px',
   boxShadow: '0 1px 6px 0 rgb(255 255 255 / 0.32)',
   borderRadius: '8px',
-	textDecoration: 'none',
-	color: '#fff',
-	cursor: 'pointer',
+  textDecoration: 'none',
+  color: '#fff',
+  cursor: 'pointer',
 };
 
 const productImg = {
   width: '100%',
-  height: "138px",
+  height: '138px',
   objectFit: 'cover',
   borderRadius: '8px 8px 0 0',
 };
@@ -43,8 +43,8 @@ const productName = {
 };
 
 const productPrice = {
-	color: '#ff5722',
-	fontSize: '14px',
+  color: '#ff5722',
+  fontSize: '14px',
   marginTop: '5px',
 };
 
@@ -52,6 +52,15 @@ const { API_URL } = process.env;
 
 function Home() {
   const { data, loading } = useData(`${API_URL}/products`, {}, { method: 'GET' }, { ssr: true });
+
+  const getResizedImage = imageUrl => {
+    if (imageUrl) {
+      return `https://res.cloudinary.com/irfan-maulana-tkpd/image/fetch/c_fill,g_auto:face,h_200,fl_force_strip.progressive/f_webp/${encodeURIComponent(
+        imageUrl,
+      )}`;
+    }
+    return '';
+  };
 
   return (
     <div className="App" data-testid="home-container">
@@ -61,7 +70,7 @@ function Home() {
           <div className="products" style={productWrapper}>
             {data.data.map(item => (
               <Link className="product" style={productCard} key={item.id} to={`/${item.id}`}>
-                <img className="product__img" style={productImg} src={item.image} alt={item.name}></img>
+                <img className="product__img" style={productImg} src={getResizedImage(item.image)} alt={item.name}></img>
                 <div style={productInfo}>
                   <div style={productName}>{item.name}</div>
                   <div style={productPrice}>{item.price}</div>
