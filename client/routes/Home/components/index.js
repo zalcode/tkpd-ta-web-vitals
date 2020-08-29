@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import LazyImage from '../../../components/LazyImage';
 import Header from '../../../components/Header';
 import RatingReview from '../../../components/RatingReview';
-import Footer from '../../../components/Footer';
+import LazyFooter from '../../../components/Footer/Lazy';
 
 const productWrapper = {
   display: 'flex',
@@ -87,7 +87,7 @@ function Home() {
           </div>
         )}
       </main>
-      <Footer />
+      <LazyFooter />
     </div>
   );
 }
