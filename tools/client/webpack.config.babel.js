@@ -407,6 +407,7 @@ module.exports = function() {
       }),
 
       new FriendlyErrorsWebpackPlugin(),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       // Generates an `index.html` or `index.client.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
